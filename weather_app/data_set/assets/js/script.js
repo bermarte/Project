@@ -34,7 +34,7 @@
 
         */
 
-        queryString = "http://api.openweathermap.org/data/2.5/forecast?q="+search+"&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
+        queryString = "https://api.openweathermap.org/data/2.5/forecast?q="+search+"&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
         console.log(queryString)
 
 
@@ -77,7 +77,7 @@
                     temp_min = "<b>temp-min:</b> "+data.list[i].main.temp_min;
                     weather = "<b>"+data.list[i].weather[0].main;
                     icon = data.list[i].weather[0].icon;
-                    var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+                    var iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
                     var imgdiv = "<img src='"+iconurl+"' alt='Weather icon'>";
 
                     /*

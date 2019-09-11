@@ -36,7 +36,7 @@
         */
         console.log("begin:")
         console.log("search", search);
-        queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
+        queryString = "https://api.openweathermap.org/data/2.5/weather?q=" + search + "&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
         console.log("*********");
         console.log("now query:");
         console.log(queryString);
@@ -71,7 +71,7 @@
 
         */
 
-        queryString = "http://api.openweathermap.org/data/2.5/forecast?q=" + search + "&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
+        queryString = "https://api.openweathermap.org/data/2.5/forecast?q=" + search + "&units=metric&appid=e91d2f269f5365bb90dc6b8c3ded940a";
         console.log("*********");
         console.log("5 days query:");
         console.log(queryString);

@@ -132,7 +132,22 @@ function searchByName(){
     }
 }
 //get moves
-var input = document.getElementById('nb');
+input = document.getElementById('nb');
+//get ids
+document.getElementById("cross-button").addEventListener("click", showId);
+function showId(){
+   console.log("id");
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+
+            document.getElementById("info-screen").innerHTML ="id: "+input.value
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No id Found :("
+        )
+}
+
 function getMoves(sat) {
     console.log(sat);
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
@@ -153,20 +168,7 @@ kys.forEach((element) => {
     });
 });
 
-//get ids
-document.getElementById("left-red-cross").addEventListener("click", showId);
-function showId(){
-    //document.getElementById("info-screen").innerHTML = "id: "+input.value;
-    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
-        .then((response) => response.json())
-        .then((data) => {
 
-            document.getElementById("info-screen").innerHTML ="id: "+input.value;
-        })
-        .catch(
-            document.getElementById("info-screen").innerHTML = "No data Found :("
-        )
-}
 
 //get height
 document.getElementById("green-button-right").addEventListener("click", getHeight);
@@ -178,7 +180,7 @@ function getHeight(){
             document.getElementById("info-screen").innerHTML = "height: "+height;
         })
         .catch(
-            document.getElementById("info-screen").innerHTML = "No data Found :("
+            document.getElementById("info-screen").innerHTML = "No height Found :("
         )
 }
 //get weight
@@ -191,7 +193,7 @@ function getWeight(){
             document.getElementById("info-screen").innerHTML = "weight: "+weight;
         })
         .catch(
-            document.getElementById("info-screen").innerHTML = "No data Found :("
+            document.getElementById("info-screen").innerHTML = "No weight Found :("
         )
 }
 

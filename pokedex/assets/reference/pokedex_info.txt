@@ -1,0 +1,30 @@
+https://pokeapi.co/
+
+https://www.youtube.com/watch?v=MZWUKEkcQaY&t=24s
+
+file:///home/bermarte/Desktop/pokedex/index.html
+
+students:
+
+https://seppeverhavert.github.io/ajax-pokedex/
+https://rawaldeep.github.io/ajax-pokedex/
+
+tutorial:
+https://www.youtube.com/watch?v=I6--xajaVO8
+ex. query pokemon api : https://pokeapi.co/api/v2/pokemon/5/
+
+reference:
+https://github.com/bloodstorms/pokedex
+https://toucantoco.com/pokedex.html
+
+some other references:
+https://codepen.io/chrischoi96/full/XqeOLb
+
+poke dex imgs > https://www.google.
+com/search?q=pokedex&client=ubuntu&hs=Hcg&channel=fs&sxsrf=ACYBGNRvPtthEv7VzoEXH2-EaEgL2Hkyow:1567952589302&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjmpPDItsHkAhWDJlAKHYMpA5UQ_AUIEigB&biw=1046&bih=558
+
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fmiro.medium.com%2Fmax%2F1200%2F1*cNYyujXNYHoxPTY6m85Wjw.png&imgrefurl=https%3A%2F%2Fmedium.com%2Fdsc-manipal%2Fcreating-a-pokedex-using-convolutional-neural-networks-7d46423cfc91&docid=fAgByDpZQc0HVM&tbnid=_ehwBJ5MRZ1XPM%3A&vet=10ahUKEwjuxYDMtsHkAhXH0qYKHc29CzIQMwhhKA8wDw..i&w=800&h=600&client=ubuntu&bih=558&biw=1046&q=pokedex&ved=0ahUKEwjuxYDMtsHkAhXH0qYKHc29CzIQMwhhKA8wDw&iact=mrc&uact=8
+
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fpa1.narvii.com%2F5744%2F4e0161f94017b5ea55795e72eb1031fa017f2854_hq.gif&imgrefurl=https%3A%2F%2Faminoapps.com%2Fc%2Fpokemon%2Fpage%2Fblog%2F5-reasons-why-you-should-complete-the-pokedex%2FVkh7_uMmwLwXmNpmmYrV4xYdnLJ0GV&docid=XvHC5ZZtq7CgyM&tbnid=HAl66Ok5dKn6cM%3A&vet=1&w=430&h=356&client=ubuntu&bih=558&biw=1046&ved=2ahUKEwiu-b7YtsHkAhXDI1AKHTY0BN8QxiAoA3oECAEQHQ&iact=c&ictx=1
+
+

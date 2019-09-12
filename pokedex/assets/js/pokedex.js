@@ -26,15 +26,16 @@ fetch(url)
         //console.log(response)
         response.json()
             .then(function (pokemonData) {
-                console.log(pokemonData)
+                //console.log(pokemonData)
 
                 for (pk = 0; pk < pokemonData.count; pk++) {
                     pokemonList.push(pokemonData.results[pk].name)
+                    console.log(pokemonData.results[pk].name);
                 }
             })
     })
     .catch(
-        console.log("cannot load data")
+        document.getElementById("info-screen").innerHTML = "no data or error"
     )
 
 
@@ -50,6 +51,7 @@ function getElemPokemonList() {
 }
 
 function getElemIdPokemon() {
+    console.log("hello");
     if (idPokemon < (pokemonList.length)) {
         document.getElementById('nb').value = idPokemon + 1;
     } else {
@@ -84,13 +86,47 @@ function decreaseIdPokemon() {
 
 function updateIdPokemon(val) {
     //input field
-    if (val <= pokemonList.length) {
-        idPokemon = parseInt(val) - 1
-        document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+
+    if (isNaN(val)){
+        console.log("not a number");
     } else {
-        document.getElementById("info-screen").innerHTML = "this pokemon doesn't exist";
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/Pokemon-disappointed.jpg";
+        console.log("search ");
+        if (val <= pokemonList.length) {
+            idPokemon = parseInt(val) - 1
+            document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
+            document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+        } else {
+            document.getElementById("info-screen").innerHTML = "this pokemon doesn't exist";
+            document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/Pokemon-disappointed.jpg";
+        }
+    }
+}
+
+//search by name
+searchByNameDiv = document.getElementById("searchByNameDiv");
+document.getElementById("blue-button-left").addEventListener("click", searchByName);
+function searchByName(){
+    if (searchByNameDiv.value !=="name of pokemon"){
+        name = searchByNameDiv.value;
+        console.log("name", searchByNameDiv.value);
+        pokeurl = "https://pokeapi.co/api/v2/pokemon/";
+        mypokemon = pokeurl+name;
+        console.log("query", mypokemon);
+        //fetch single pokemon by name
+        fetch(mypokemon)
+        .then(function (response) {
+                //console.log(response)
+                response.json()
+                    .then(function (pokemonSingle) {
+                        console.log(pokemonSingle.id);
+                        document.getElementById('nb').value = pokemonSingle.id;
+                        updateIdPokemon(pokemonSingle.id);
+                    })
+            })
+                .catch(
+                    document.getElementById("info-screen").innerHTML = "did not find anything"
+                )
+        //end fetch
     }
 }
 

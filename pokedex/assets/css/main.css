@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
 @font-face {
   font-family: 'digital_dream';
   src: url("../fonts/DIGITALDREAMSKEWNARROW-webfont.eot");
@@ -20,6 +21,17 @@ body {
 #pokedex {
   width: 750px;
   height: 500px; }
+
+#searchByNameDiv{
+  position:relative;
+  top: -115px;
+  left: -22px;
+  font-family: 'VT323', monospace;
+  font-size: 19px;
+  border-radius: 12px;
+  text-align: center;
+  width: 169px;
+}
 
 #left {
   position: relative;
@@ -691,4 +703,3 @@ body {
   #logo img {
     display: none; } }
 
-/*# sourceMappingURL=main.css.map */

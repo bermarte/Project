@@ -115,7 +115,6 @@ function searchByName(){
         //fetch single pokemon by name
         fetch(mypokemon)
         .then(function (response) {
-                //console.log(response)
                 response.json()
                     .then(function (pokemonSingle) {
                         console.log(pokemonSingle.id);
@@ -128,7 +127,32 @@ function searchByName(){
                 )
         //end fetch
     }
+    else{
+        document.getElementById("info-screen").innerHTML = "write a name";
+    }
 }
+//get moves
+let input = document.getElementById('nb');
+function getMoves(sat) {
+    console.log(sat);
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            var powerRe =  data.moves[sat].move.name;
+            document.getElementById("info-screen").innerHTML = powerRe;
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No Moves Found :("
+        )
+}
+var kys = document.querySelectorAll("#keyboard>div");
+kys.forEach((element) => {
+    let dtnum = element.getAttribute("data-move");
+    element.addEventListener("click", function (){
+        getMoves(dtnum);
+    });
+});
+
 
 function retroPicturePokemon() {
     document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/" + (idPokemon + 1) + ".png";

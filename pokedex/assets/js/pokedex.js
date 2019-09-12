@@ -51,7 +51,6 @@ function getElemPokemonList() {
 }
 
 function getElemIdPokemon() {
-    console.log("hello");
     if (idPokemon < (pokemonList.length)) {
         document.getElementById('nb').value = idPokemon + 1;
     } else {
@@ -152,6 +151,13 @@ kys.forEach((element) => {
         getMoves(dtnum);
     });
 });
+
+//get ids
+document.getElementById("left-red-cross").addEventListener("click", showId);
+function showId(){
+    document.getElementById("info-screen").innerHTML = "id: "+input.value;
+}
+
 
 
 function retroPicturePokemon() {

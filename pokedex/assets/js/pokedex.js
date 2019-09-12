@@ -105,7 +105,7 @@ function updateIdPokemon(val) {
 searchByNameDiv = document.getElementById("searchByNameDiv");
 document.getElementById("blue-button-left").addEventListener("click", searchByName);
 function searchByName(){
-    if (searchByNameDiv.value !=="name of pokemon"){
+    if (searchByNameDiv.value !=="name of pokemon" && searchByNameDiv.value !==""){
         name = searchByNameDiv.value;
         console.log("name", searchByNameDiv.value);
         pokeurl = "https://pokeapi.co/api/v2/pokemon/";
@@ -126,12 +126,13 @@ function searchByName(){
                 )
         //end fetch
     }
+
     else{
         document.getElementById("info-screen").innerHTML = "write a name";
     }
 }
 //get moves
-let input = document.getElementById('nb');
+var input = document.getElementById('nb');
 function getMoves(sat) {
     console.log(sat);
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
@@ -155,10 +156,44 @@ kys.forEach((element) => {
 //get ids
 document.getElementById("left-red-cross").addEventListener("click", showId);
 function showId(){
-    document.getElementById("info-screen").innerHTML = "id: "+input.value;
+    //document.getElementById("info-screen").innerHTML = "id: "+input.value;
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+
+            document.getElementById("info-screen").innerHTML ="id: "+input.value;
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No data Found :("
+        )
 }
 
-
+//get height
+document.getElementById("green-button-right").addEventListener("click", getHeight);
+function getHeight(){
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            var height =  data.height;
+            document.getElementById("info-screen").innerHTML = "height: "+height;
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No data Found :("
+        )
+}
+//get weight
+document.getElementById("orange-button-right").addEventListener("click", getWeight);
+function getWeight(){
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            var weight =  data.weight;
+            document.getElementById("info-screen").innerHTML = "weight: "+weight;
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No data Found :("
+        )
+}
 
 function retroPicturePokemon() {
     document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/" + (idPokemon + 1) + ".png";

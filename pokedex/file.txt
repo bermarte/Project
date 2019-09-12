@@ -1,0 +1,32 @@
+resource for names / ID
+resource for https://pokeapi.co/api/v2/pokemon-species/ =>
+"results": [
+{
+"name": "bulbasaur",
+"url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+},
+
+resource for previous evolution
+https://pokeapi.co/api/v2/pokemon-species/2/ =>
+"evolves_from_species": {
+"name": "bulbasaur",
+"url": "https://pokeapi.co/api/v2/pokemon-species/1/"
+}
+
+/api/v2/evolution-chain/{id}/
+
+To Do:
+- add form(s) to html = fetch ID and/or name
+- push html element (with style?) to html with previous version
+- abilities
+
+Nice to have:
+- change background with pokemon encounter place
+- add italian version of the site
+- link to next pokemon
+
+const urlPow = "https://pokeapi.co/api/v2/pokemon/" + (idPokemon + 1) + "/";
+        fetch(urlPow)
+            .then(function(response) {
+                return response.json();
+            }).then(function(json)

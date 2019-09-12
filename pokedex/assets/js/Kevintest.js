@@ -1,24 +1,3 @@
-/*
-
-var pokemonList = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard",
-"Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna",
-"Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans",
-"Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran-f","Nidorina","Nidoqueen","Nidoran-m",
-"Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff",
-"Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett",
-"Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine",
-"Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp",
-"Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem",
-"Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio",
-"Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee",
-"Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee",
-"Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea"
-,"Seadra","Goldeen","Seaking","Staryu","Starmie","Mr.Mime","Scyther","Jynx","Electabuzz","Magmar",
-"Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon",
-"Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini",
-"Dragonair","Dragonite","Mewtwo","Mew"];
-
- */
 url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964";
 var pokemonList = [];
 fetch(url)
@@ -29,7 +8,7 @@ fetch(url)
                 //console.log(pokemonData);
 
                 for (pk = 0; pk < pokemonData.count; pk++) {
-                   pokemonList.push(pokemonData.results[pk].name);
+                    pokemonList.push(pokemonData.results[pk].name);
 
                 }
             })
@@ -38,34 +17,41 @@ fetch(url)
         console.log("cannot load data")
     );
 
-
-
-    document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById('nb').value = 1;
-    document.getElementById("info-screen").innerHTML = "bulbasaur";
+    document.getElementById("info-screen").innerHTML = "bulbasaur"+ "<br />" + arr;
     document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
 });
-    let input = document.getElementById('nb');
-fetch('https://pokeapi.co/api/v2/pokemon/'+ (input.value + 1)+'/').then((response) => response.json())
-    .then((data)=> {
-        console.log(data);
-        let arr = [];
-        let nom = data.moves.length;
-        console.log(nom);
-        if (nom > 4) {
-            nom = 4;
-        }
-        for (let i = 0; i < nom; i++) {
-            arr.push(data.moves[i].move.name);
-            console.log(arr)
-        }
-        //let moves = arr.join(', ');
-    });
+let input = document.getElementById('nb');
+let arr = [];
+
+
+function getMoves() {
+        console.log("mention");
+        fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                let nom = data.moves.length;
+                console.log(nom);
+                const numPow = 4;
+                for (let i = 0; i < numPow; i++) {
+                    arr.push(data.moves[i].move.name);
+                }
+                console.log(arr)
+            })
+
+    }
+
+
+document.getElementById("firstblue").addEventListener("click", getMoves);
+
 function getElemPokemonList() {
     //msg on screen
     document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
-   // document.getElementById("info-screen").innerHTML =
+
 }
+
 
 function getElemIdPokemon() {
     if (idPokemon < (pokemonList.length)) {
@@ -101,6 +87,7 @@ function decreaseIdPokemon() {
 }
 
 function updateIdPokemon(val) {
+    console.log("test");
     //input field
     if (val <= pokemonList.length) {
         idPokemon = parseInt(val) - 1
@@ -110,6 +97,8 @@ function updateIdPokemon(val) {
         document.getElementById("info-screen").innerHTML = "this pokemon doesn't exist";
         document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/Pokemon-disappointed.jpg";
     }
+    //console.log(getMoves(),"mess")
+
 }
 
 function retroPicturePokemon() {
@@ -134,17 +123,4 @@ function ShinyPicture() {
             document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
         }
     }
-
-    //document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
-    /*
-    if (idPokemon == 24) {
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/pokemon/Pikachu-drug.gif";
-    } else {
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/pokemon/" + pokemonList[idPokemon] + ".jpg";
-    }
-
-     */
-
-
 }
-

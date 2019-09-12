@@ -27,18 +27,19 @@ let arr = [];
 
 
 function getMoves(sat) {
-        console.log(sat);
+    console.log(sat);
         fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
             .then((response) => response.json())
             .then((data) => {
-                let arr =[];
+                //let arr =[];
                // console.log(data);
                 //let nom = data.moves.length;
                // console.log(nom);
-                let numPow = 10;
-                /*for (let i = 0; i < numPow; i++) {
-                    arr.push(data.moves[i].move.name);
-                }*/
+               // let numPow = 10;
+               // for (let i = 0; i < numPow; i++) {
+                  var powerRe =  data.moves[sat].move.name;
+                document.getElementById("info-screen").innerHTML = powerRe;
+               // }*/
                // console.log(arr)
             })
             .catch(
@@ -50,7 +51,10 @@ var kys = document.querySelectorAll("#keyboard>div");
 kys.forEach((element) => {
 
     let dtnum = element.getAttribute("data-move");
-    element.addEventListener("click",getMoves(dtnum));
+    element.addEventListener("click", function (){
+        getMoves(dtnum);
+    });
+    //console.log(dtnum);
 });
 
 //document.getElementById(keyboard").addEventListener("click", getMoves);

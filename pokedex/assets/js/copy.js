@@ -16,6 +16,7 @@ fetch(url)
     .catch(
         console.log("cannot load data")
     );
+
 document.addEventListener("DOMContentLoaded", function (event) {
     document.getElementById('nb').value = 1;
     document.getElementById("info-screen").innerHTML = "bulbasaur"+ "<br />" + arr;
@@ -24,18 +25,29 @@ document.addEventListener("DOMContentLoaded", function (event) {
 let input = document.getElementById('nb');
 let arr = [];
 
-fetch('https://pokeapi.co/api/v2/pokemon/'+ (1)).then((response) => response.json())
-    .then((data)=> {
-        console.log(data);
-        //let arr = [];
-        let nom = data.moves.length;
-        console.log(nom);
 
-        for (let i = 0; i < 4; i++) {
-            arr.push(data.moves[i].move.name);
-        }
-        console.log(arr)
-    });
+function getMoves() {
+    console.log("mention");
+    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            let arr =[];
+            console.log(data);
+            let nom = data.moves.length;
+            console.log(nom);
+            const numPow = 10;
+            for (let i = 0; i < numPow; i++) {
+                arr.push(data.moves[i].move.name);
+            }
+            console.log(arr)
+        })
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No Moves Found :("
+        )
+}
+
+
+document.getElementById("firstblue").addEventListener("click", getMoves);
 
 function getElemPokemonList() {
     //msg on screen
@@ -78,6 +90,7 @@ function decreaseIdPokemon() {
 }
 
 function updateIdPokemon(val) {
+    console.log("test");
     //input field
     if (val <= pokemonList.length) {
         idPokemon = parseInt(val) - 1
@@ -87,6 +100,8 @@ function updateIdPokemon(val) {
         document.getElementById("info-screen").innerHTML = "this pokemon doesn't exist";
         document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/Pokemon-disappointed.jpg";
     }
+    //console.log(getMoves(),"mess")
+
 }
 
 function retroPicturePokemon() {

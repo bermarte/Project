@@ -26,25 +26,34 @@ let input = document.getElementById('nb');
 let arr = [];
 
 
-function getMoves() {
-        console.log("mention");
+function getMoves(sat) {
+        console.log(sat);
         fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
-                let nom = data.moves.length;
-                console.log(nom);
-                const numPow = 4;
-                for (let i = 0; i < numPow; i++) {
+                let arr =[];
+               // console.log(data);
+                //let nom = data.moves.length;
+               // console.log(nom);
+                let numPow = 10;
+                /*for (let i = 0; i < numPow; i++) {
                     arr.push(data.moves[i].move.name);
-                }
-                console.log(arr)
+                }*/
+               // console.log(arr)
             })
-
+            .catch(
+                document.getElementById("info-screen").innerHTML = "No Moves Found :("
+            )
     }
 
+var kys = document.querySelectorAll("#keyboard>div");
+kys.forEach((element) => {
 
-document.getElementById("firstblue").addEventListener("click", getMoves);
+    let dtnum = element.getAttribute("data-move");
+    element.addEventListener("click",getMoves(dtnum));
+});
+
+//document.getElementById(keyboard").addEventListener("click", getMoves);
 
 function getElemPokemonList() {
     //msg on screen

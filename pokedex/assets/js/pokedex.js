@@ -100,13 +100,29 @@ function updateIdPokemon(val) {
         }
     }
 }
+var audio1 = new Audio('assets/audio/professor oak.mp3');
+function audioPlayGreen() {
+    if(audio1.paused) {audio1.play()}
+    else  audio1.pause();
+}
+
+var audio2 = new Audio('assets/audio/ending.mp3');
+function audioPlayYellow() {
+    if(audio2.paused) {audio2.play()}
+    else  audio2.pause();
+}
+
+
+
+document.getElementById("leaf-button-right").addEventListener("click",audioPlayGreen);
+document.getElementById("yellow-button-right").addEventListener("click",audioPlayYellow);
 
 //search by name
 searchByNameDiv = document.getElementById("searchByNameDiv");
 document.getElementById("blue-button-left").addEventListener("click", searchByName);
 function searchByName(){
     if (searchByNameDiv.value !=="name of pokemon" && searchByNameDiv.value !==""){
-        name = searchByNameDiv.value;
+        //name = searchByNameDiv.value;
         console.log("name", searchByNameDiv.value);
         pokeurl = "https://pokeapi.co/api/v2/pokemon/";
         mypokemon = pokeurl+name;

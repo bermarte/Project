@@ -131,7 +131,7 @@ function searchByName(){
         document.getElementById("info-screen").innerHTML = "write a name";
     }
 }
-//get moves
+
 input = document.getElementById('nb');
 //get ids
 document.getElementById("cross-button").addEventListener("click", showId);
@@ -177,7 +177,7 @@ function getHeight(){
         .then((response) => response.json())
         .then((data) => {
             var height =  data.height;
-            document.getElementById("info-screen").innerHTML = "height: "+height;
+            document.getElementById("info-screen").innerHTML = "height: "+height+" ft";
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No height Found :("
@@ -190,10 +190,42 @@ function getWeight(){
         .then((response) => response.json())
         .then((data) => {
             var weight =  data.weight;
-            document.getElementById("info-screen").innerHTML = "weight: "+weight;
+            document.getElementById("info-screen").innerHTML = "weight: "+weight+" lb";
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No weight Found :("
+        )
+}
+//evolves from
+document.getElementById("left-cross-button").addEventListener("click", evolvesFrom);
+function evolvesFrom(){
+    fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.evolves_from_species) {
+                //name
+                var evolveData =  data.evolves_from_species.name
+                console.log("evolveData",evolveData)
+
+                //url of ancestor
+                //console.log(data.evolves_from_species)
+                //console.log("https://pokeapi.co/api/v2/pokemon/"+evolveData+sprites.front_default
+                return fetch("https://pokeapi.co/api/v2/pokemon/"+evolveData)
+            }})
+            .then(function(response){
+                return response.json()
+            })
+            .then((data) =>{
+                //console.log(data)
+                sprite = data.sprites.front_default
+                //var iconurl = "http://openweathermap.org/img/w/" + icon + ".png"
+                var imgdiv = "<a href=''><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                document.getElementById("info-screen").innerHTML = imgdiv
+            })
+
+
+        .catch(
+            document.getElementById("info-screen").innerHTML = "No evolution Found :("
         )
 }
 

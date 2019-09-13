@@ -230,7 +230,208 @@ function evolvesFrom(){
             document.getElementById("info-screen").innerHTML = "No evolution Found :("
         )
 }
-//
+//evolution to
+document.getElementById("right-cross-button").addEventListener("click", evolveTo);
+function evolveTo(){
+
+
+    var evoChain = [];
+    fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
+        .then((response) => response.json())
+        .then((data) => {
+            //console.log(data)
+            evolution_chain_url = data.evolution_chain.url
+            //console.log(evolution_chain_url)
+            fetch(evolution_chain_url)
+                .then((response) => response.json())
+                .then((data) =>{
+                    //console.log(data)
+                    var evoChain = [];
+                    var evoData = data.chain;
+
+                    do {
+                        var evoDetails = evoData['evolution_details'][0];
+
+                        evoChain.push({
+                            "species_name": evoData.species.name,
+                            "min_level": !evoDetails ? 1 : evoDetails.min_level,
+                            "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
+                            "item": !evoDetails ? null : evoDetails.item
+                        });
+
+                        evoData = evoData['evolves_to'][0];
+                    } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
+
+                    //console.log(evoChain[evoChain.length-1])
+
+                    toTest = document.getElementById("info-screen").innerHTML
+                    evolved ="";
+                    if ( evoChain.length == 3){
+                        console.log("got the third one")
+                        poke0 = evoChain[evoChain.length-3].species_name
+                        poke1 = evoChain[evoChain.length-2].species_name
+                        poke2 = evoChain[evoChain.length-1].species_name
+                        poke3 = "nothing"
+
+                        console.log(toTest)
+
+                        if (toTest == poke0){
+                            console.log("first",poke1)
+                            evolved = poke1
+                        }
+                        if (toTest == poke1){
+                            console.log("second",poke2)
+                            evolved = poke2
+                        }
+                        if (toTest == poke2){
+                            console.log("third",poke3)
+                            evolved = poke3
+                        }
+                    }
+                    else if (evoChain.length == 2){
+                        console.log("length two")
+
+                        poke0 = "nothing";//evoChain[evoChain.length-3].species_name
+                        poke1 = evoChain[evoChain.length-2].species_name
+                        poke2 = evoChain[evoChain.length-1].species_name
+                        poke3 = "nothing"
+
+                        if (toTest == poke1){
+                            console.log("second",poke2)
+                            evolved = poke2
+                        }
+                        if (toTest == poke2){
+                            console.log("third",poke3)
+                            evolved = poke3
+                        }
+
+
+                        if (evolved=="nothing"){
+
+
+                            msg = "No evolution Found :("
+
+                            document.getElementById("info-screen").innerHTML = msg
+
+                        }
+
+                    }
+                    else if (evoChain.length == 1){
+                        console.log("length one")
+                        poke0 = "nothing";
+                        poke1 =  "nothing"
+                        poke2 = evoChain[evoChain.length-1].species_name
+                        poke3 = "nothing"
+
+                        if (toTest == poke2){
+                            console.log("third",poke3)
+                            evolved = "nothing"
+                            msg = "No evolution Found :("
+
+                            document.getElementById("info-screen").innerHTML = msg
+                        }
+                    }
+                    if (evolved=="nothing"){
+
+                        document.getElementById("info-screen").innerHTML = "No evolution Found :("
+                    }
+                    else{
+                    console.log("url","https://pokeapi.co/api/v2/pokemon/"+evolved)
+
+                    return fetch("https://pokeapi.co/api/v2/pokemon/"+evolved)
+                    }
+
+
+                })
+
+                .then(function(response){
+                    return response.json()
+                })
+                .then((data) =>{
+
+                    sprite = data.sprites.front_default
+                    id = data.id
+                    //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                    var imgdiv = "<a href='javascript:;' onclick='evolveToScreen("+id+")'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                    document.getElementById("info-screen").innerHTML = imgdiv
+                    console.log(id)
+
+                })
+
+                //if empty raise exception
+
+
+        })
+
+
+
+
+        //.then((response) => { })
+
+
+            //console.log(data)
+            //evolution_chain
+            /*
+            var evoData = response.data.chain;
+
+            do {
+                var evoDetails = evoData['evolution_details'][0];
+
+                evoChain.push({
+                    "species_name": evoData.species.name,
+                    "min_level": !evoDetails ? 1 : evoDetails.min_level,
+                    "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
+                    "item": !evoDetails ? null : evoDetails.item
+                });
+
+                evoData = evoData['evolves_to'][0];
+            } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
+
+             */
+
+    /*
+
+
+    var evoData = response.data.chain;
+
+    do {
+        var evoDetails = evoData['evolution_details'][0];
+
+        evoChain.push({
+            "species_name": evoData.species.name,
+            "min_level": !evoDetails ? 1 : evoDetails.min_level,
+            "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
+            "item": !evoDetails ? null : evoDetails.item
+        });
+
+        evoData = evoData['evolves_to'][0];
+    } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
+
+     */
+
+
+
+
+
+}
+//audio
+var audio1 = new Audio('assets/audio/professor oak.mp3');
+function audioPlayGreen() {
+    if(audio1.paused) {audio1.play()}
+    else audio1.pause();
+}
+
+var audio2 = new Audio('assets/audio/ending.mp3');
+function audioPlayYellow() {
+    if(audio2.paused) {audio2.play()}
+    else audio2.pause();
+}
+
+document.getElementById("leaf-button-right").addEventListener("click",audioPlayGreen);
+document.getElementById("yellow-button-right").addEventListener("click",audioPlayYellow);
+
+
+
 function evolveToScreen(element){
     document.getElementById('nb').value = element;
     updateIdPokemon(element);

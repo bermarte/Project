@@ -16,9 +16,8 @@ https://pokeapi.co/api/v2/pokemon-species/2/ =>
 /api/v2/evolution-chain/{id}/
 
 To Do:
-- add form(s) to html = fetch ID and/or name
 - push html element (with style?) to html with previous version
-- abilities
+
 
 Nice to have:
 - change background with pokemon encounter place

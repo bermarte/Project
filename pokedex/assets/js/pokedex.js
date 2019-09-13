@@ -216,17 +216,24 @@ function evolvesFrom(){
                 return response.json()
             })
             .then((data) =>{
-                //console.log(data)
+
                 sprite = data.sprites.front_default
-                //var iconurl = "http://openweathermap.org/img/w/" + icon + ".png"
-                var imgdiv = "<a href=''><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                id = data.id
+                //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                var imgdiv = "<a href='javascript:;' onclick='evolveToScreen("+id+")'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
                 document.getElementById("info-screen").innerHTML = imgdiv
+                console.log(id)
             })
 
 
         .catch(
             document.getElementById("info-screen").innerHTML = "No evolution Found :("
         )
+}
+//
+function evolveToScreen(element){
+    document.getElementById('nb').value = element;
+    updateIdPokemon(element);
 }
 
 function retroPicturePokemon() {

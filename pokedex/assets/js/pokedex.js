@@ -1,4 +1,3 @@
-
 url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964";
 var pokemonList = [];
 fetch(url)
@@ -10,7 +9,7 @@ fetch(url)
 
                 for (pk = 0; pk < pokemonData.count; pk++) {
                     pokemonList.push(pokemonData.results[pk].name)
-                    console.log(pokemonData.results[pk].name);
+                    //console.log(pokemonData.results[pk].name);
                 }
             })
     })
@@ -66,7 +65,7 @@ function decreaseIdPokemon() {
 function updateIdPokemon(val) {
     //input field
 
-    if (isNaN(val)){
+    if (isNaN(val)) {
         console.log("not a number");
     } else {
         console.log("search ");
@@ -84,16 +83,17 @@ function updateIdPokemon(val) {
 //search by name
 searchByNameDiv = document.getElementById("searchByNameDiv");
 document.getElementById("blue-button-left").addEventListener("click", searchByName);
-function searchByName(){
-    if (searchByNameDiv.value !=="name of pokemon" && searchByNameDiv.value !==""){
+
+function searchByName() {
+    if (searchByNameDiv.value !== "name of pokemon" && searchByNameDiv.value !== "") {
         name = searchByNameDiv.value;
         console.log("name", searchByNameDiv.value);
         pokeurl = "https://pokeapi.co/api/v2/pokemon/";
-        mypokemon = pokeurl+name;
+        mypokemon = pokeurl + name;
         console.log("query", mypokemon);
         //fetch single pokemon by name
         fetch(mypokemon)
-        .then(function (response) {
+            .then(function (response) {
                 response.json()
                     .then(function (pokemonSingle) {
                         console.log(pokemonSingle.id);
@@ -101,13 +101,11 @@ function searchByName(){
                         updateIdPokemon(pokemonSingle.id);
                     })
             })
-                .catch(
-                    document.getElementById("info-screen").innerHTML = "did not find anything"
-                )
+            .catch(
+                document.getElementById("info-screen").innerHTML = "did not find anything"
+            )
         //end fetch
-    }
-
-    else{
+    } else {
         document.getElementById("info-screen").innerHTML = "write a name";
     }
 }
@@ -115,13 +113,14 @@ function searchByName(){
 //get ids
 input = document.getElementById('nb');
 document.getElementById("cross-button").addEventListener("click", showId);
-function showId(){
-   console.log("id");
+
+function showId() {
+    console.log("id");
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
         .then((response) => response.json())
         .then((data) => {
 
-            document.getElementById("info-screen").innerHTML ="id: "+input.value
+            document.getElementById("info-screen").innerHTML = "id: " + input.value
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No id Found :("
@@ -134,31 +133,32 @@ function getMoves(sat) {
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
         .then((response) => response.json())
         .then((data) => {
-            var powerRe =  data.moves[sat].move.name;
+            var powerRe = data.moves[sat].move.name;
             document.getElementById("info-screen").innerHTML = powerRe;
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No Moves Found :("
         )
 }
+
 var kys = document.querySelectorAll("#keyboard>div");
 kys.forEach((element) => {
     let dtnum = element.getAttribute("data-move");
-    element.addEventListener("click", function (){
+    element.addEventListener("click", function () {
         getMoves(dtnum);
     });
 });
 
 
-
 //get height
 document.getElementById("green-button-right").addEventListener("click", getHeight);
-function getHeight(){
+
+function getHeight() {
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
         .then((response) => response.json())
         .then((data) => {
-            var height =  data.height;
-            document.getElementById("info-screen").innerHTML = "height: "+height+" ft";
+            var height = data.height;
+            document.getElementById("info-screen").innerHTML = "height: " + height + " ft";
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No height Found :("
@@ -167,12 +167,13 @@ function getHeight(){
 
 //get weight
 document.getElementById("orange-button-right").addEventListener("click", getWeight);
-function getWeight(){
+
+function getWeight() {
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
         .then((response) => response.json())
         .then((data) => {
-            var weight =  data.weight;
-            document.getElementById("info-screen").innerHTML = "weight: "+weight+" lb";
+            var weight = data.weight;
+            document.getElementById("info-screen").innerHTML = "weight: " + weight + " lb";
         })
         .catch(
             document.getElementById("info-screen").innerHTML = "No weight Found :("
@@ -181,32 +182,34 @@ function getWeight(){
 
 //evolves from
 document.getElementById("left-cross-button").addEventListener("click", evolvesFrom);
-function evolvesFrom(){
+
+function evolvesFrom() {
     fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
         .then((response) => response.json())
         .then((data) => {
             if (data.evolves_from_species) {
                 //name
-                var evolveData =  data.evolves_from_species.name
-                console.log("evolveData",evolveData)
+                var evolveData = data.evolves_from_species.name
+                console.log("evolveData", evolveData)
 
                 //url of ancestor
                 //console.log(data.evolves_from_species)
                 //console.log("https://pokeapi.co/api/v2/pokemon/"+evolveData+sprites.front_default
-                return fetch("https://pokeapi.co/api/v2/pokemon/"+evolveData)
-            }})
-            .then(function(response){
-                return response.json()
-            })
-            .then((data) =>{
+                return fetch("https://pokeapi.co/api/v2/pokemon/" + evolveData)
+            }
+        })
+        .then(function (response) {
+            return response.json()
+        })
+        .then((data) => {
 
-                sprite = data.sprites.front_default
-                id = data.id
+            sprite = data.sprites.front_default
+            id = data.id
 
-                var imgdiv = "<a href='javascript:;' onclick='evolveToScreen("+id+")'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
-                document.getElementById("info-screen").innerHTML = imgdiv
-                console.log(id)
-            })
+            var imgdiv = "<a href='javascript:;' onclick='evolveToScreen(" + id + ")'><img src='" + sprite + "' alt='pokemon evolve from'></a>"
+            document.getElementById("info-screen").innerHTML = imgdiv
+            console.log(id)
+        })
 
 
         .catch(
@@ -216,8 +219,8 @@ function evolvesFrom(){
 
 //evolution to
 document.getElementById("right-cross-button").addEventListener("click", evolveTo);
-function evolveTo(){
 
+function evolveTo() {
 
     var evoChain = [];
     fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
@@ -228,7 +231,7 @@ function evolveTo(){
             //console.log(evolution_chain_url)
             fetch(evolution_chain_url)
                 .then((response) => response.json())
-                .then((data) =>{
+                .then((data) => {
                     //console.log(data)
                     var evoChain = [];
                     var evoData = data.chain;
@@ -246,102 +249,108 @@ function evolveTo(){
                         evoData = evoData['evolves_to'][0];
                     } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
 
+                    //toTest works only if name is shown in info-screen
+                    var myId = ""
+                    fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            name = data.name
+                            toTest = name
+                            evolved = "";
+                            if (evoChain.length == 3) {
+                                console.log("got the third one")
+                                poke0 = evoChain[evoChain.length - 3].species_name
+                                poke1 = evoChain[evoChain.length - 2].species_name
+                                poke2 = evoChain[evoChain.length - 1].species_name
+                                poke3 = "nothing"
 
-                    toTest = document.getElementById("info-screen").innerHTML
-                    evolved ="";
-                    if ( evoChain.length == 3){
-                        console.log("got the third one")
-                        poke0 = evoChain[evoChain.length-3].species_name
-                        poke1 = evoChain[evoChain.length-2].species_name
-                        poke2 = evoChain[evoChain.length-1].species_name
-                        poke3 = "nothing"
+                                //console.log(toTest)
 
-                        console.log(toTest)
+                                if (toTest == poke0) {
+                                    console.log("first", poke1)
+                                    evolved = poke1
+                                }
+                                if (toTest == poke1) {
+                                    console.log("second", poke2)
+                                    evolved = poke2
+                                }
+                                if (toTest == poke2) {
+                                    console.log("third", poke3)
+                                    evolved = poke3
+                                }
+                            } else if (evoChain.length == 2) {
+                                console.log("length two")
 
-                        if (toTest == poke0){
-                            console.log("first",poke1)
-                            evolved = poke1
-                        }
-                        if (toTest == poke1){
-                            console.log("second",poke2)
-                            evolved = poke2
-                        }
-                        if (toTest == poke2){
-                            console.log("third",poke3)
-                            evolved = poke3
-                        }
-                    }
-                    else if (evoChain.length == 2){
-                        console.log("length two")
+                                poke0 = "nothing";//evoChain[evoChain.length-3].species_name
+                                poke1 = evoChain[evoChain.length - 2].species_name
+                                poke2 = evoChain[evoChain.length - 1].species_name
+                                poke3 = "nothing"
 
-                        poke0 = "nothing";//evoChain[evoChain.length-3].species_name
-                        poke1 = evoChain[evoChain.length-2].species_name
-                        poke2 = evoChain[evoChain.length-1].species_name
-                        poke3 = "nothing"
-
-                        if (toTest == poke1){
-                            console.log("second",poke2)
-                            evolved = poke2
-                        }
-                        if (toTest == poke2){
-                            console.log("third",poke3)
-                            evolved = poke3
-                        }
+                                if (toTest == poke1) {
+                                    console.log("second", poke2)
+                                    evolved = poke2
+                                }
+                                if (toTest == poke2) {
+                                    console.log("third", poke3)
+                                    evolved = poke3
+                                }
 
 
-                        if (evolved=="nothing"){
+                                if (evolved == "nothing") {
 
 
-                            msg = "No evolution Found :("
+                                    msg = "No evolution Found :("
 
-                            document.getElementById("info-screen").innerHTML = msg
+                                    document.getElementById("info-screen").innerHTML = msg
 
-                        }
+                                }
 
-                    }
-                    else if (evoChain.length == 1){
-                        console.log("length one")
-                        poke0 = "nothing";
-                        poke1 =  "nothing"
-                        poke2 = evoChain[evoChain.length-1].species_name
-                        poke3 = "nothing"
+                            } else if (evoChain.length == 1) {
+                                console.log("length one")
+                                poke0 = "nothing";
+                                poke1 = "nothing"
+                                poke2 = evoChain[evoChain.length - 1].species_name
+                                poke3 = "nothing"
 
-                        if (toTest == poke2){
-                            console.log("third",poke3)
-                            evolved = "nothing"
-                            msg = "No evolution Found :("
+                                if (toTest == poke2) {
+                                    console.log("third", poke3)
+                                    evolved = "nothing"
+                                    msg = "No evolution Found :("
 
-                            document.getElementById("info-screen").innerHTML = msg
-                        }
-                    }
-                    if (evolved=="nothing"){
+                                    document.getElementById("info-screen").innerHTML = msg
+                                }
+                            }
+                            if (evolved == "nothing") {
 
-                        document.getElementById("info-screen").innerHTML = "No evolution Found :("
-                    }
-                    else{
-                    console.log("url","https://pokeapi.co/api/v2/pokemon/"+evolved)
+                                document.getElementById("info-screen").innerHTML = "No evolution Found :("
+                            } else {
+                                console.log("url", "https://pokeapi.co/api/v2/pokemon/" + evolved)
 
-                    return fetch("https://pokeapi.co/api/v2/pokemon/"+evolved)
-                    }
+                                return fetch("https://pokeapi.co/api/v2/pokemon/" + evolved)
+                            }
+                        })
 
+
+
+                        .then(function (response) {
+                            return response.json()
+                        })
+                        .then((data) => {
+
+                            sprite = data.sprites.front_default
+                            id = data.id
+                            //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+                            var imgdiv = "<a href='javascript:;' onclick='evolveToScreen(" + id + ")'><img src='" + sprite + "' alt='pokemon evolve from'></a>"
+                            document.getElementById("info-screen").innerHTML = imgdiv
+                            console.log(id)
+
+                        })
+
+                    //exception
 
                 })
 
-                .then(function(response){
-                    return response.json()
-                })
-                .then((data) =>{
 
-                    sprite = data.sprites.front_default
-                    id = data.id
-                    //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
-                    var imgdiv = "<a href='javascript:;' onclick='evolveToScreen("+id+")'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
-                    document.getElementById("info-screen").innerHTML = imgdiv
-                    console.log(id)
-
-                })
-
-                //exception
 
         })
 
@@ -350,24 +359,28 @@ function evolveTo(){
 
 //play audio
 var audio1 = new Audio('assets/audio/professor oak.mp3');
+
 function audioPlayGreen() {
-    if(audio1.paused) {audio1.play()}
-    else audio1.pause();
+    if (audio1.paused) {
+        audio1.play()
+    } else audio1.pause();
 }
 
 var audio2 = new Audio('assets/audio/ending.mp3');
+
 function audioPlayYellow() {
-    if(audio2.paused) {audio2.play()}
-    else audio2.pause();
+    if (audio2.paused) {
+        audio2.play()
+    } else audio2.pause();
 }
 
-document.getElementById("leaf-button-right").addEventListener("click",audioPlayGreen);
-document.getElementById("yellow-button-right").addEventListener("click",audioPlayYellow);
+document.getElementById("leaf-button-right").addEventListener("click", audioPlayGreen);
+document.getElementById("yellow-button-right").addEventListener("click", audioPlayYellow);
 
 
 //functions to load images
 
-function evolveToScreen(element){
+function evolveToScreen(element) {
     document.getElementById('nb').value = element;
     updateIdPokemon(element);
 }

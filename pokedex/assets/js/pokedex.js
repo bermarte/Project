@@ -230,6 +230,7 @@ function evolvesFrom(){
             document.getElementById("info-screen").innerHTML = "No evolution Found :("
         )
 }
+
 //evolution to
 document.getElementById("right-cross-button").addEventListener("click", evolveTo);
 function evolveTo(){
@@ -248,7 +249,7 @@ function evolveTo(){
                     //console.log(data)
                     var evoChain = [];
                     var evoData = data.chain;
-
+                    //https://stackoverflow.com/questions/39112862/pokeapi-angular-how-to-get-pokemons-evolution-chain
                     do {
                         var evoDetails = evoData['evolution_details'][0];
 
@@ -262,7 +263,6 @@ function evolveTo(){
                         evoData = evoData['evolves_to'][0];
                     } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
 
-                    //console.log(evoChain[evoChain.length-1])
 
                     toTest = document.getElementById("info-screen").innerHTML
                     evolved ="";
@@ -358,59 +358,10 @@ function evolveTo(){
 
                 })
 
-                //if empty raise exception
+                //exception
 
 
         })
-
-
-
-
-        //.then((response) => { })
-
-
-            //console.log(data)
-            //evolution_chain
-            /*
-            var evoData = response.data.chain;
-
-            do {
-                var evoDetails = evoData['evolution_details'][0];
-
-                evoChain.push({
-                    "species_name": evoData.species.name,
-                    "min_level": !evoDetails ? 1 : evoDetails.min_level,
-                    "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
-                    "item": !evoDetails ? null : evoDetails.item
-                });
-
-                evoData = evoData['evolves_to'][0];
-            } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
-
-             */
-
-    /*
-
-
-    var evoData = response.data.chain;
-
-    do {
-        var evoDetails = evoData['evolution_details'][0];
-
-        evoChain.push({
-            "species_name": evoData.species.name,
-            "min_level": !evoDetails ? 1 : evoDetails.min_level,
-            "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
-            "item": !evoDetails ? null : evoDetails.item
-        });
-
-        evoData = evoData['evolves_to'][0];
-    } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
-
-     */
-
-
-
 
 
 }

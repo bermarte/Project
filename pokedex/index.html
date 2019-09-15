@@ -29,33 +29,33 @@
 		      <div id="border-screen">
 		        <div id="button-top1"></div>
 		        <div id="button-top2"></div>
-		        <div id="button-bottom" onclick="ShinyPicture()"></div>
+		        <div id="button-bottom" onclick="ShinyPicture()" title="shiny pokemon"></div>
 		        <p class="selectDisable">&equiv;&equiv;</p>
 		      </div>
 		      <div id="screen"><img class="selectDisable" src="" alt=""/></div>
 		      <div id="triangle"></div>
-		      <div id="blue-button-left"></div>
-		      <div id="green-button-left" onclick="PicturePokemon()"></div>
-		      <div id="orange-button-left" onclick="retroPicturePokemon()"></div>
+		      <div id="blue-button-left" title="search pokemon by name"></div>
+		      <div id="green-button-left" onclick="PicturePokemon()" title="front pokemon"></div>
+		      <div id="orange-button-left" onclick="retroPicturePokemon()" title="background pokemon"></div>
 		      <div id="square-button-left">
-		        <input id="nb" type="text" name="howmuch" value="" oninput="updateIdPokemon(this.value)">
-				  <input id="searchByNameDiv" type="text" name="searchByNameDiv" value="name of pokemon">
+		        <input id="nb" type="text" name="howmuch" value="" oninput="updateIdPokemon(this.value)" title="search pokemon by ID">
+				  <input id="searchByNameDiv" type="text" name="searchByNameDiv" value="name of pokemon" title="write name of pokemon">
 		      </div>
 		      <div id="cross">
 		        <div id="mid-cross">
 		          <div id="mid-circle"></div>
 		        </div>
-		        <div id="top-cross" onclick="increaseIdPokemon()">
+		        <div id="top-cross" onclick="increaseIdPokemon()"  title="next pokemon">
 		          <div id="upC"></div>
 		        </div>
-		        <div id="right-cross" onclick="increaseIdPokemon()">
+		        <div id="right-cross" onclick="increaseIdPokemon()" title="previous pokemon">
 		          <div id="rightC"></div>
 		        </div>
-		        <div id="bot-cross" onclick="decreaseIdPokemon()">
+		        <div id="bot-cross" onclick="decreaseIdPokemon()" title="next pokemon">
 		          <div id="downC"></div>
 		        </div>
-		        <div id="left-cross">
-		          <div id="leftC" onclick="decreaseIdPokemon()"></div>
+		        <div id="left-cross" onclick="decreaseIdPokemon()" title="previous pokemon">
+		          <div id="leftC"></div>
 		        </div>
 		      </div>
 		    </div>
@@ -68,28 +68,28 @@
 		      <div id="info-screen">
 		      </div>
 		      <div id="keyboard">
-                  <div class="key" id="blue1" data-move="0"></div>
-                  <div class="key" id="blue2" data-move="1"></div>
-                  <div class="key" id="blue3" data-move="2"></div>
-                  <div class="key" id="blue4" data-move="3"></div>
-                  <div class="key" id="blue5" data-move="4"></div>
-                  <div class="key" id="blue6" data-move="5"></div>
-                  <div class="key" id="blue7" data-move="6"></div>
-                  <div class="key" id="blue8" data-move="7"></div>
-                  <div class="key" id="blue9" data-move="8"></div>
-                  <div class="key" id="blue10" data-move="9"></div>
+                  <div class="key" id="blue1" data-move="0" title="show move #1"></div>
+                  <div class="key" id="blue2" data-move="1" title="show move #2"></div>
+                  <div class="key" id="blue3" data-move="2" title="show move #3"></div>
+                  <div class="key" id="blue4" data-move="3" title="show move #4"></div>
+                  <div class="key" id="blue5" data-move="4" title="show move #5"></div>
+                  <div class="key" id="blue6" data-move="5" title="show move #6"></div>
+                  <div class="key" id="blue7" data-move="6" title="show move #7"></div>
+                  <div class="key" id="blue8" data-move="7" title="show move #8"></div>
+                  <div class="key" id="blue9" data-move="8" title="show move #9"></div>
+                  <div class="key" id="blue10" data-move="9" title="show move #10"></div>
 		      </div>
-		      <div id="leaf-button-right"></div>
-		      <div id="yellow-button-right"></div>
-		      <div id="green-button-right"></div>
-		      <div id="orange-button-right"></div>
-		      <div id="left-cross-button">
+		      <div id="leaf-button-right" title="play song #1"></div>
+		      <div id="yellow-button-right"  title="play song #2"></div>
+		      <div id="green-button-right" title="show height"></div>
+		      <div id="orange-button-right" title="show weight"></div>
+		      <div id="left-cross-button" title="show previous evolution">
 		        <div id="leftT"></div>
 		      </div>
-		      <div id="right-cross-button">
+		      <div id="right-cross-button"  title="show next evolution">
 		        <div id="rightT"></div>
 		      </div>
-		      <div id="cross-button">
+		      <div id="cross-button" title="show ID">
 		        <div id="left-red-cross"></div>
 		      </div>
 		      <div id="square-button-right1"></div>

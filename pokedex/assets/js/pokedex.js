@@ -96,7 +96,7 @@ function updateIdPokemon(val) {
             document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
             document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
         } else {
-            document.getElementById("info-screen").innerHTML = "<div style=\"text-align:center\">this pokemon doesn't exists</div>";
+            document.getElementById("info-screen").innerHTML = "no data found :(";
             document.getElementById('screen').getElementsByTagName('img')[0].src = "./assets/img/pokedex/no-image.jpg";
 
 

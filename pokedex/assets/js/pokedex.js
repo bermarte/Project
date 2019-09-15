@@ -31,6 +31,7 @@ function getElemPokemonList() {
 
 function getElemIdPokemon() {
     if (idPokemon < (pokemonList.length)) {
+        document.getElementById('searchByNameDiv').value = pokemonList[idPokemon];
         document.getElementById('nb').value = idPokemon + 1;
     } else {
         document.getElementById('nb').value = idPokemon;
@@ -69,6 +70,7 @@ function updateIdPokemon(val) {
         console.log("not a number");
     } else {
         console.log("search ");
+
         if (val <= pokemonList.length) {
             idPokemon = parseInt(val) - 1
             document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
@@ -184,12 +186,14 @@ function getWeight() {
 document.getElementById("left-cross-button").addEventListener("click", evolvesFrom);
 
 function evolvesFrom() {
+    var evolveData
     fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
         .then((response) => response.json())
         .then((data) => {
             if (data.evolves_from_species) {
+
                 //name
-                var evolveData = data.evolves_from_species.name
+                evolveData = data.evolves_from_species.name
                 console.log("evolveData", evolveData)
 
                 //url of ancestor
@@ -201,6 +205,7 @@ function evolvesFrom() {
         .then(function (response) {
             return response.json()
         })
+
         .then((data) => {
 
             sprite = data.sprites.front_default
@@ -212,12 +217,13 @@ function evolvesFrom() {
         })
 
 
-        .catch(
+        .catch(error =>{
             document.getElementById("info-screen").innerHTML = "No evolution Found :("
+            }
         )
 }
 
-//evolution to
+//evolve to
 document.getElementById("right-cross-button").addEventListener("click", evolveTo);
 
 function evolveTo() {
@@ -336,7 +342,6 @@ function evolveTo() {
                             return response.json()
                         })
                         .then((data) => {
-
                             sprite = data.sprites.front_default
                             id = data.id
                             //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
@@ -344,7 +349,12 @@ function evolveTo() {
                             document.getElementById("info-screen").innerHTML = imgdiv
                             console.log(id)
 
+
                         })
+                        .catch(error =>{
+                                document.getElementById("info-screen").innerHTML = "No evolution Found :("
+                            }
+                        )
 
                     //exception
 
@@ -383,6 +393,7 @@ document.getElementById("yellow-button-right").addEventListener("click", audioPl
 function evolveToScreen(element) {
     document.getElementById('nb').value = element;
     updateIdPokemon(element);
+    document.getElementById('searchByNameDiv').value = pokemonList[idPokemon];//pokemonList[idPokemon];
 }
 
 function retroPicturePokemon() {

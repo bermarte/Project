@@ -5,11 +5,9 @@ fetch(url)
         //console.log(response)
         response.json()
             .then(function (pokemonData) {
-                //console.log(pokemonData)
 
                 for (pk = 0; pk < pokemonData.count; pk++) {
                     pokemonList.push(pokemonData.results[pk].name)
-                    //console.log(pokemonData.results[pk].name);
                 }
             })
     })
@@ -49,7 +47,22 @@ function increaseIdPokemon() {
     getElemIdPokemon();
     getElemPokemonList();
     //NEXT WAS pokemonList[idPokemon]
-    document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+    imgToLoad = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+    ImageExist(imgToLoad);
+}
+
+//check if image exists
+function ImageExist(url)
+{
+    var img = document.createElement('img');
+    img.src = url;
+    img.onload = function(e){
+        document.getElementById('screen').getElementsByTagName('img')[0].src = url;
+    };
+
+    img.onerror = function(e) {
+        document.getElementById('screen').getElementsByTagName('img')[0].src = "./assets/img/pokedex/no-image.jpg";
+    };
 }
 
 function decreaseIdPokemon() {
@@ -60,24 +73,34 @@ function decreaseIdPokemon() {
     }
     getElemIdPokemon()
     getElemPokemonList()
-    document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+
+    imgToLoad = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+
+    ImageExist(imgToLoad);
 }
 
 function updateIdPokemon(val) {
-    //input field
 
     if (isNaN(val)) {
         console.log("not a number");
-    } else {
-        console.log("search ");
+        document.getElementById("info-screen").innerHTML = "not a number";
+    }
+    else if (val ===""){
+        document.getElementById("info-screen").innerHTML = "empty?";
+    }
+    else {
 
         if (val <= pokemonList.length) {
+
             idPokemon = parseInt(val) - 1
             document.getElementById("info-screen").innerHTML = pokemonList[idPokemon];
             document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
         } else {
-            document.getElementById("info-screen").innerHTML = "this pokemon doesn't exist";
-            document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/Pokemon-disappointed.jpg";
+            document.getElementById("info-screen").innerHTML = "<div style=\"text-align:center\">this pokemon doesn't exists</div>";
+            document.getElementById('screen').getElementsByTagName('img')[0].src = "./assets/img/pokedex/no-image.jpg";
+
+
+
         }
     }
 }
@@ -197,8 +220,6 @@ function evolvesFrom() {
                 console.log("evolveData", evolveData)
 
                 //url of ancestor
-                //console.log(data.evolves_from_species)
-                //console.log("https://pokeapi.co/api/v2/pokemon/"+evolveData+sprites.front_default
                 return fetch("https://pokeapi.co/api/v2/pokemon/" + evolveData)
             }
         })
@@ -232,9 +253,8 @@ function evolveTo() {
     fetch('https://pokeapi.co/api/v2/pokemon-species/' + input.value)
         .then((response) => response.json())
         .then((data) => {
-            //console.log(data)
             evolution_chain_url = data.evolution_chain.url
-            //console.log(evolution_chain_url)
+
             fetch(evolution_chain_url)
                 .then((response) => response.json())
                 .then((data) => {
@@ -255,7 +275,8 @@ function evolveTo() {
                         evoData = evoData['evolves_to'][0];
                     } while (!!evoData && evoData.hasOwnProperty('evolves_to'));
 
-                    //toTest works only if name is shown in info-screen
+                    //todo: remove repetitions
+                    /* should be rewritten */
                     var myId = ""
                     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
                         .then((response) => response.json())
@@ -270,7 +291,6 @@ function evolveTo() {
                                 poke2 = evoChain[evoChain.length - 1].species_name
                                 poke3 = "nothing"
 
-                                //console.log(toTest)
 
                                 if (toTest == poke0) {
                                     console.log("first", poke1)
@@ -287,7 +307,7 @@ function evolveTo() {
                             } else if (evoChain.length == 2) {
                                 console.log("length two")
 
-                                poke0 = "nothing";//evoChain[evoChain.length-3].species_name
+                                poke0 = "nothing";
                                 poke1 = evoChain[evoChain.length - 2].species_name
                                 poke2 = evoChain[evoChain.length - 1].species_name
                                 poke3 = "nothing"
@@ -304,9 +324,7 @@ function evolveTo() {
 
                                 if (evolved == "nothing") {
 
-
                                     msg = "No evolution Found :("
-
                                     document.getElementById("info-screen").innerHTML = msg
 
                                 }
@@ -337,18 +355,16 @@ function evolveTo() {
                         })
 
 
-
                         .then(function (response) {
                             return response.json()
                         })
                         .then((data) => {
                             sprite = data.sprites.front_default
                             id = data.id
-                            //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+
                             var imgdiv = "<a href='javascript:;' onclick='evolveToScreen(" + id + ")'><img src='" + sprite + "' alt='pokemon evolve from'></a>"
                             document.getElementById("info-screen").innerHTML = imgdiv
                             console.log(id)
-
 
                         })
                         .catch(error =>{
@@ -356,11 +372,7 @@ function evolveTo() {
                             }
                         )
 
-                    //exception
-
                 })
-
-
 
         })
 
@@ -393,15 +405,18 @@ document.getElementById("yellow-button-right").addEventListener("click", audioPl
 function evolveToScreen(element) {
     document.getElementById('nb').value = element;
     updateIdPokemon(element);
-    document.getElementById('searchByNameDiv').value = pokemonList[idPokemon];//pokemonList[idPokemon];
+    document.getElementById('searchByNameDiv').value = pokemonList[idPokemon];
 }
 
 function retroPicturePokemon() {
-    document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/" + (idPokemon + 1) + ".png";
+    imgToLoad = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/" + (idPokemon + 1) + ".png";
+    ImageExist(imgToLoad);
 }
 
 function PicturePokemon() {
-    document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+    imgToLoad = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
+    ImageExist(imgToLoad);
+    //document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
 }
 
 function ShinyPicture() {
@@ -409,7 +424,8 @@ function ShinyPicture() {
         if (document.getElementById('screen').getElementsByTagName('img')[0].src.includes("back")) {
             document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/" + (idPokemon + 1) + ".png";
         } else {
-            document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + (idPokemon + 1) + ".png";
+            imgToLoad = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + (idPokemon + 1) + ".png";
+            ImageExist(imgToLoad);
         }
     } else {
         if (document.getElementById('screen').getElementsByTagName('img')[0].src.includes("back")) {
@@ -419,16 +435,4 @@ function ShinyPicture() {
         }
     }
 
-    //document.getElementById('screen').getElementsByTagName('img')[0].src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + (idPokemon + 1) + ".png";
-    /*
-    if (idPokemon == 24) {
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/pokemon/Pikachu-drug.gif";
-    } else {
-        document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/pokemon/" + pokemonList[idPokemon] + ".jpg";
-    }
-
-    */
-
-
 }
-

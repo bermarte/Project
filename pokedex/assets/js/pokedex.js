@@ -1,24 +1,4 @@
-/*
 
-var pokemonList = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Charizard",
-"Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna",
-"Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate","Spearow","Fearow","Ekans",
-"Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran-f","Nidorina","Nidoqueen","Nidoran-m",
-"Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff",
-"Zubat","Golbat","Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett",
-"Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine",
-"Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam","Machop","Machoke","Machamp",
-"Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem",
-"Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch'd","Doduo","Dodrio",
-"Seel","Dewgong","Grimer","Muk","Shellder","Cloyster","Gastly","Haunter","Gengar","Onix","Drowzee",
-"Hypno","Krabby","Kingler","Voltorb","Electrode","Exeggcute","Exeggutor","Cubone","Marowak","Hitmonlee",
-"Hitmonchan","Lickitung","Koffing","Weezing","Rhyhorn","Rhydon","Chansey","Tangela","Kangaskhan","Horsea"
-,"Seadra","Goldeen","Seaking","Staryu","Starmie","Mr.Mime","Scyther","Jynx","Electabuzz","Magmar",
-"Pinsir","Tauros","Magikarp","Gyarados","Lapras","Ditto","Eevee","Vaporeon","Jolteon","Flareon","Porygon",
-"Omanyte","Omastar","Kabuto","Kabutops","Aerodactyl","Snorlax","Articuno","Zapdos","Moltres","Dratini",
-"Dragonair","Dragonite","Mewtwo","Mew"];
-
- */
 url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964";
 var pokemonList = [];
 fetch(url)
@@ -132,8 +112,8 @@ function searchByName(){
     }
 }
 
-input = document.getElementById('nb');
 //get ids
+input = document.getElementById('nb');
 document.getElementById("cross-button").addEventListener("click", showId);
 function showId(){
    console.log("id");
@@ -148,6 +128,7 @@ function showId(){
         )
 }
 
+//get moves
 function getMoves(sat) {
     console.log(sat);
     fetch('https://pokeapi.co/api/v2/pokemon/' + input.value)
@@ -183,6 +164,7 @@ function getHeight(){
             document.getElementById("info-screen").innerHTML = "No height Found :("
         )
 }
+
 //get weight
 document.getElementById("orange-button-right").addEventListener("click", getWeight);
 function getWeight(){
@@ -196,6 +178,7 @@ function getWeight(){
             document.getElementById("info-screen").innerHTML = "No weight Found :("
         )
 }
+
 //evolves from
 document.getElementById("left-cross-button").addEventListener("click", evolvesFrom);
 function evolvesFrom(){
@@ -219,7 +202,7 @@ function evolvesFrom(){
 
                 sprite = data.sprites.front_default
                 id = data.id
-                //var imgdiv = "<a href='evolveToscreen("+id+");'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
+
                 var imgdiv = "<a href='javascript:;' onclick='evolveToScreen("+id+")'><img src='"+sprite+"' alt='pokemon evolve from'></a>"
                 document.getElementById("info-screen").innerHTML = imgdiv
                 console.log(id)
@@ -360,12 +343,12 @@ function evolveTo(){
 
                 //exception
 
-
         })
 
 
 }
-//audio
+
+//play audio
 var audio1 = new Audio('assets/audio/professor oak.mp3');
 function audioPlayGreen() {
     if(audio1.paused) {audio1.play()}
@@ -382,6 +365,7 @@ document.getElementById("leaf-button-right").addEventListener("click",audioPlayG
 document.getElementById("yellow-button-right").addEventListener("click",audioPlayYellow);
 
 
+//functions to load images
 
 function evolveToScreen(element){
     document.getElementById('nb').value = element;
@@ -419,7 +403,7 @@ function ShinyPicture() {
         document.getElementById('screen').getElementsByTagName('img')[0].src = "assets/img/pokedex/pokemon/" + pokemonList[idPokemon] + ".jpg";
     }
 
-     */
+    */
 
 
 }

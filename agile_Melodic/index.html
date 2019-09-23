@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148191160-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-148191160-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Translate your favourite songs online, from any language into any language">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+
+    <title>Melodic: translate your favourite songs</title>
+</head>
+<body class="parallax">
+<header>
+    <section class="header">
+        <div class="container">
+            <div class="container-header">
+                <img src="img/logo.png" alt="Melodic logo" id="logo">
+                <p class="reveal"><span class="showUp">Translate your songs</span></p>
+            </div>
+        </div>
+    </section>
+</header>
+<div class="container-box">
+<div class="container-nav">
+<nav class="myNav navbar-inverse">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <div class="container-fluid collapse navbar-collapse" id="navigation">
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">MELODIC</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" id="idForm">
+
+            <div class="form-group">
+                <label for="idSearchBar">
+                    <input type="text" class="form-control" placeholder="Search Your Song!" name="search"
+                           id="idSearchBar">
+                </label>
+                <label for="artist">
+                    <input type="text" class="form-control" placeholder="Group/artist" name="search" id="artist">
+                </label>
+                <label>
+                    <select id="idLanguageCode" class="form-control">
+                        <option value="nl">Dutch</option>
+                        <option value="be">Bulgarian</option>
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="ru">Russian</option>
+                        <option value="es">Spanish</option>
+                        <option value="tr">Turkish</option>
+                        <option value="uk">Ukrainian</option>
+                    </select>
+                </label>
+            </div>
+            <input type="button" class="btn btn-default" id="idSearchButton" value="Submit">
+        </form>
+    </div>
+</nav>
+</div>
+</div>
+
+<section class="container">
+    <div class="row justify-content-center text-center withPadding">
+        <div class="col-md-6 p-b">
+            <div id="idOriginal" class="col-md-12 original">
+                <strong>Original Text</strong>
+            </div>
+        </div>
+        <div class="col-md-6 p-b">
+            <div id="idTranslated" class="col-md-12 translated">
+                <strong>Translated Text</strong>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mt-md-0 mt-3">
+                <h4>MELODIC</h4>
+                <hr style="width: 100px;">
+                <p class="text-justify">Have you ever listened to a song that you thought
+                    was very beautiful, but in a language you do not understand?
+                    That is exactly what Melodic had in mind when we started our
+                    website. We hope you enjoy and for questions or suggestions,
+                    do please contact us.
+                    Hope to be hearing from you!
+                </p>
+            </div>
+
+            <div class="container">
+                <div class="row col-xs-6 col-md-3 col-md-offset-1 address">
+                    <h4 class="text-uppercase">Contact Us</h4>
+                    <hr style="width: 80px;">
+                    <ul class="list-unstyled">
+                        <li>Sint-Pietersvliet 7</li>
+                        <li>2000 Antwerpen</li>
+                        <li>Belgium</li>
+                        <li class="email">
+                            <a href="mailto:melodicbvba@gmail.com" id="email">moc.liamg@abvbcidolem</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <small style="color:grey" class="copyright">Copyright &amp;copy 2019 All Rights Reserved.</small>
+                <a href="#" class="link-footer">MELODIC</a>
+            </div>
+        </div>
+    </div>
+    <section class="footer">
+        <div class="container text-left" id="icons">
+            <a href="#"><small style="color:white" class="fa fa-lg fa-skype pull-right"> </small></a>
+            <a href="#"><small style="color:white" class="fa fa-lg fa-google-plus pull-right"> </small></a>
+            <a href="#"><small style="color:white" class="fa fa-lg fa-linkedin pull-right"> </small></a>
+            <a href="#"><small style="color:white" class="fa fa-lg fa-twitter pull-right"> </small></a>
+            <a href="#"><small style="color:white" class="fa fa-lg fa-facebook pull-right"> </small></a>
+        </div>
+    </section>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

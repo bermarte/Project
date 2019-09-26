@@ -21,13 +21,11 @@
     width: 0;
     animation: reveal 5s 1;
 }
-
 @keyframes reveal {
-    0% {opacity:0;width:0;}
-    20% {opacity:1;width:0;}
-    30% {width:355px;}
+    0% {opacity:0;}
+    20% {opacity:1;}
     80% {opacity:1;}
-    100% {opacity:0;width:355px;}
+    100% {opacity:0;}
 }
 .container-header{
     display: flex;
@@ -48,7 +46,6 @@
     padding: 10px;
     flex:8;
 }
-
 footer {
     background-color: #333333;
     color: white;
@@ -67,22 +64,18 @@ footer {
     color: white;
     opacity: 0.7;
 }
-
 .address h4{
     color: #ED4F06;
 }
-
 .address a{
     color: #ED4F06 ;
 }
-
 footer h4{
     color: #ED4F06;
 }
 footer ul{
     line-height:2em;
 }
-
 #idOriginal {
     min-height: 200px;
     padding: 12px;
@@ -92,7 +85,6 @@ footer ul{
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
 }
-
 #idTranslated {
     min-height: 200px;
     padding: 12px;
@@ -105,13 +97,11 @@ footer ul{
 .p-b {
     padding-bottom: 20px;
 }
-
 #idTranslation{
     display: flex;
     padding-top: 20px;
     padding-bottom: 25px;
 }
-
 #icons a:hover {
     padding: 20px;
     font-size: 30px;
@@ -122,13 +112,11 @@ footer ul{
     color: white;
     opacity: 0.7;
 }
-
 #idSearchButton {
     margin-top: -5px;
 }
 .myNav{
     padding-top: 6px;
-    /*margin-bottom: 20px;*/
 }
 .parallax {
     background-attachment: fixed;
@@ -176,4 +164,18 @@ footer ul{
 .withPadding strong{
     display: block;
     padding-bottom: 20px;
+}
+/*
+firefox bootstrap form-control
+https://jsfiddle.net/wvyoabbL/
+*/
+@-moz-document url-prefix() {
+    select.form-control {
+        padding-right: 25px;
+        background-image: url("data:image/svg+xml,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='14px' height='14px' viewBox='0 0 1200 1000' fill='rgb(51,51,51)'> <path d='M1100 411l-198 -199l-353 353l-353 -353l-197 199l551 551z'/> </svg>");
+        background-repeat: no-repeat;
+        background-position: calc(100% - 7px) 50%;
+        -moz-appearance: none;
+        appearance: none;
+    }
 }

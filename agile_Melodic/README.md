@@ -1,5 +1,5 @@
 # agile-Melodic
-FORKED FROM https://github.com/Jeroen-Jozef/agile-Melodic/tree/bernardo
+https://bermarte.github.io/Project/agile_Melodic/
 ## Consolidation challenge
 In this exercise we (see below) are learning the agile philosophy through the Scrum methodology. We have invented a new company that translates lyrics from one language to another using two APIs:
 * Chartlyrics to get the lyrics of the songs
@@ -19,4 +19,6 @@ In this exercise we (see below) are learning the agile philosophy through the Sc
 [Bernardo Martelli](https://github.com/bermarte/)
 
 [Jeroen Hendrickx](https://github.com/Jeroen-Jozef/)
+
+FORKED FROM https://github.com/Jeroen-Jozef/agile-Melodic/tree/bernardo
 

@@ -3,6 +3,11 @@
     padding: 0 auto;
     box-sizing: border-box;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .header {
     padding: 10px;
     text-align: center;
@@ -19,13 +24,18 @@
 }
 .showUp {
     width: 0;
-    animation: reveal 5s 1;
+    opacity:1;
+    animation: reveal 5s 1s;
 }
 @keyframes reveal {
     0% {opacity:0;}
     20% {opacity:1;}
     80% {opacity:1;}
     100% {opacity:0;}
+}
+.container-song {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 .container-header{
     display: flex;
@@ -47,10 +57,10 @@
     flex:8;
 }
 footer {
+    margin-top: auto;
     background-color: #333333;
     color: white;
-    position: relative;
-    padding:45px 0 20px;
+    padding:38px 0 20px;
     font-size:20px;
     display: flex;
     line-height: 1.5em;
@@ -102,10 +112,20 @@ footer ul{
     padding-top: 20px;
     padding-bottom: 25px;
 }
+#icons{
+    padding-right: 100px;
+    height: 36px;
+   display: inline-flexbox;   
+}
+#icons a {
+    color:white;
+    
+
+}
 #icons a:hover {
     padding: 20px;
-    font-size: 30px;
-    width: 30px;
+    font-size: 28px;
+    width: 28px;
     text-align: center;
     text-decoration: none;
     margin: 5px 2px;
@@ -157,9 +177,6 @@ footer ul{
     background-color: #222222;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
-}
-#icons{
-    padding-right: 100px;
 }
 .withPadding strong{
     display: block;

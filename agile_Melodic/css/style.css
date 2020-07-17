@@ -60,8 +60,8 @@ footer {
     margin-top: auto;
     background-color: #333333;
     color: white;
-    padding:38px 0 20px;
-    font-size:20px;
+    padding: 26px 0 20px;
+    font-size: 20px;
     display: flex;
     line-height: 1.5em;
 }
@@ -119,8 +119,6 @@ footer ul{
 }
 #icons a {
     color:white;
-    
-
 }
 #icons a:hover {
     padding: 20px;

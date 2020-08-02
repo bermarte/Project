@@ -21,14 +21,12 @@ class App extends Component {
             const response = await fetch(url);
             const json = await response.json();
             this.setState({ data: json, loaded: true });
-            console.log(this.state.data);//all Obj.
-
         } catch (error) {
             console.log(error);
         }
 
     };
-    
+
     render() {
 
         this.state.loaded ?
@@ -39,7 +37,6 @@ class App extends Component {
         const lastDate = new Date(this.state.data.Date);
         //date formatting from data/dateOptions
         const options = OPTIONS;
-        console.log(lastDate);
         return (
             <div >
                 <header>
@@ -49,7 +46,7 @@ class App extends Component {
                     <div>
                         <h3>last updated: {lastDate.toLocaleDateString("en-US", options)} </h3>
                     </div>
-                    <WorldMap storage ={this.state.data} />
+                    <WorldMap storage={this.state.data} />
                 </div>
             </div>
 

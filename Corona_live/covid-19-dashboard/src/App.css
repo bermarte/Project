@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Questrial&display=swap');
 body{
   background-color: rgb(139, 138, 138);
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
+
 h1,h3 {
   text-align:center;
   font-family: 'Questrial', sans-serif;
@@ -16,14 +20,28 @@ h3{
 }
 #map-container{
   background-color: rgb(192, 190, 190);
-  height: 700px;
   margin: 40px;
   border: 4px solid rgba(93, 92, 92, 0.746);
   overflow: hidden;
   border-radius: 25px;
-  display: flex;
-  align-items: center;
 }
-.container{
-  
+
+.datamaps-bubble:hover,
+#globals-info:hover{
+  cursor: pointer;
+}
+#globals-info{
+  color: #1864ab;
+  background-color: rgba(236, 239, 244, 0.5);
+  padding: 12px 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 8px;
+  position: relative;
+  display: inline-flex;
+  margin-left: 80px;
+  top: -300px;
+}
+#globals-info div{
+  padding-top: 8px;
 }

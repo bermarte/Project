@@ -11,7 +11,7 @@
     "react-scripts": "1.1.4",
     "topojson": "^3.0.2"
   },
-  "homepage": "/https://bermarte.github.io/Project/Corona_live/covid-19-dashboard/deploy/",
+  "homepage": "https://bermarte.github.io/Project/Corona_live/covid-19-dashboard/deploy/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

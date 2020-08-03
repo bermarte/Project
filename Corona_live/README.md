@@ -35,7 +35,7 @@ add dependencies
 [report](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report.pdf)<br>
 [report 2](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_2.pdf)<br>
 [report 3](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_3.pdf)<br>
-
-<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/covid-map.svg" width="704" height="414" /><img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/click.gif" width="180" height="180" />
-
-<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/screenshot.png" width="625" height="526" />
+<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/click.gif" width="180" height="180" />
+<p align="center">
+<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/covid-map.svg" width="704" height="414" />
+</p>

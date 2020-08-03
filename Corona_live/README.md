@@ -1,17 +1,13 @@
 # Covid-19 Dashboard Exercise
-
-[report](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report.pdf)<br>
-[report 2](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_2.pdf)<br>
-[report 3](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_3.pdf)<br>
+ 
+## node commands and create-react-app
 
 ```node
 sudo npm install -g create-react-app@1.5.2
 create-react-app --help
 create-react-app confusion --scripts-version=react-scripts@1.1.4
 ```
-![animation - click](https://github.com/bermarte/Project/blob/master/Corona_live/mat/click.gif)
-
-## node commands
+Install create-react-app
 
 ```node
 yarn start
@@ -36,4 +32,10 @@ Removes everything
 ```
 add dependencies
 
+[report](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report.pdf)<br>
+[report 2](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_2.pdf)<br>
+[report 3](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_3.pdf)<br>
 
+<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/covid-map.svg" width="704" height="414" /><img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/click.gif" width="180" height="180" />
+
+<img src="https://github.com/bermarte/Project/blob/master/Corona_live/mat/screenshot.png" width="625" height="526" />

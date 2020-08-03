@@ -31,6 +31,7 @@ Removes everything
   yarn add d3@3.5.3 topojson datamaps
 ```
 add dependencies
+<hr>
 
 [report](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report.pdf)<br>
 [report 2](https://github.com/bermarte/Project/blob/master/Corona_live/mat/report_2.pdf)<br>
